@@ -12,9 +12,10 @@ import json
 import pandas as pd
 import gspread
 from google.oauth2.service_account import Credentials
-from serpapi import GoogleSearch
 from transformers import pipeline
-
+# Purono line: from serpapi import GoogleSearch (Eta kete din)
+# Noutun line:
+from serpapi.google_search import GoogleSearch
 # ১. GitHub Secrets theke credentials neya
 SERPAPI_KEY = os.getenv("SERPAPI_KEY")
 GOOGLE_JSON = os.getenv("GOOGLE_CREDENTIALS")
