@@ -2,20 +2,20 @@ name: SeraDish Daily Update
 
 on:
   schedule:
-    - cron: '0 0 * * *' # প্রতিদিন রাত ১২টায় অটো রান হবে
-  workflow_dispatch: # যাতে আপনি চাইলে নিজেও 'Run' বাটনে ক্লিক করে আপডেট করতে পারেন
+    - cron: '0 0 * * *' # Protidin raat 12-tay auto run hobe
+  workflow_dispatch: # Manual run korar option
 
 jobs:
   update:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4 # Updated from v3 to v4
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5 # Updated from v4 to v5
         with:
-          python-version: '3.9'
+          python-version: '3.11' # Ektu update version use kora bhalo
 
       - name: Install Dependencies
         run: |
@@ -25,4 +25,5 @@ jobs:
         env:
           SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true # Force update to Node 24
         run: python main.py
