@@ -13,15 +13,14 @@ import gspread
 from google.oauth2.service_account import Credentials
 from transformers import pipeline
 
-# SerpApi Import - Ei part-tuku ekhon khuboi stable
-try:
-    from serpapi import GoogleSearch
-except ImportError:
-    from serpapi.google_search import GoogleSearch
+# সঠিক ইমপোর্ট পদ্ধতি (serpapi বাদ দিয়ে সরাসরি google-search-results এর ক্লাস)
+from lib.google_search_results import GoogleSearch 
 
-# ১. GitHub Secrets theke credentials neya
+# ১. GitHub Secrets থেকে credentials নেয়া
 SERPAPI_KEY = os.getenv("SERPAPI_KEY")
 GOOGLE_JSON = os.getenv("GOOGLE_CREDENTIALS")
+
+# বাকি কোড আগের মতোই থাকবে...
 
 # বাকি কোড আগের মতোই থাকবে...
 
