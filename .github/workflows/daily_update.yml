@@ -5,17 +5,20 @@ on:
     - cron: '0 0 * * *' # Protidin raat 12-tay auto run hobe
   workflow_dispatch: # Manual run korar option
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true # Node 24 support activate kora holo
+
 jobs:
   update:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4 # Updated from v3 to v4
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v5 # Updated from v4 to v5
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.11' # Ektu update version use kora bhalo
+          python-version: '3.11'
 
       - name: Install Dependencies
         run: |
@@ -25,5 +28,4 @@ jobs:
         env:
           SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true # Force update to Node 24
         run: python main.py
