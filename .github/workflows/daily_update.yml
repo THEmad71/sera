@@ -22,7 +22,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          pip install pandas gspread google-auth serpapi transformers torch
+          pip install pandas gspread google-auth google-search-results transformers torch
 
       - name: Run Scraper Script
         env:
