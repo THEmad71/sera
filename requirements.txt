@@ -1,6 +1,6 @@
+google-search-results
 pandas
 gspread
 google-auth
-google-search-results
 transformers
 torch
